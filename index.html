@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Referral Code</title>
+    <script>
+        async function fetchCode() {
+            let response = await fetch('https://your-fastapi-app.onrender.com/get-code'); // Update with your backend URL
+            let data = await response.json();
+            if (data.error) {
+                document.getElementById('code-container').innerText = 'No more codes available';
+            } else {
+                document.getElementById('code-container').innerHTML = 
+                    `<a href='https://authors-direct.com/spotify/?code=${data.code}' target='_blank'>${data.code}</a>`;
+            }
+        }
+        window.onload = fetchCode;
+    </script>
+</head>
+<body>
+    <h1>Your Spotify Referral Code</h1>
+    <div id="code-container">Loading...</div>
+</body>
+</html>
