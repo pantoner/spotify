@@ -23,19 +23,27 @@
         `;
       } else {
         codeContainer.innerHTML = `
-          <p>
-            <a href="https://authors-direct.com/spotify/?code=${data.code}" target="_blank" class="fs-4 text-decoration-none">
+          <p class="fs-4" id="code-text">
+            <a href="https://authors-direct.com/spotify/?code=${data.code}" target="_blank" class="text-decoration-none">
               ${data.code}
             </a>
           </p>
-          <p>Copy this code. Click the link below to use the code:</p>
-          <p>
-            <a href="https://authors-direct.com/spotify/" target="_blank" class="text-decoration-none">
-              https://authors-direct.com/spotify/
-            </a>
-          </p>
+          <button class="btn btn-primary" onclick="copyCode()">Copy Code</button>
+          <hr class="my-4">
+          <p>Copy this code, or click the link below to use it:</p>
+          <a href="https://authors-direct.com/spotify/" target="_blank" class="text-decoration-none">
+            https://authors-direct.com/spotify/
+          </a>
         `;
       }
+    }
+
+    function copyCode() {
+      const codeElement = document.getElementById("code-text");
+      const codeText = codeElement.innerText.trim();
+      navigator.clipboard.writeText(codeText).then(() => {
+        alert("Code copied to clipboard!");
+      });
     }
 
     window.onload = fetchCode;
