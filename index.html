@@ -6,7 +6,7 @@
     <title>Spotify Referral Code</title>
     <script>
         async function fetchCode() {
-            let response = await fetch('https://your-fastapi-app.onrender.com/get-code'); // Update with your backend URL
+            let response = await fetch('https://spotback.onrender.com/get-code'); // Update with your backend URL
             let data = await response.json();
             if (data.error) {
                 document.getElementById('code-container').innerText = 'No more codes available';
